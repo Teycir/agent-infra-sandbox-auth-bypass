@@ -8,7 +8,7 @@ WebSocket shell that runs as `gem` with passwordless `sudo` to root.
 
 | | |
 |---|---|
-| Image | `ghcr.io/agent-infra/sandbox:latest` |
+| Image | `ghcr.io/agent-infra/sandbox:1.11.0` (tag digest `sha256:6328d7fd…`, identical to `latest` at test time) |
 | Source | `github.com/agent-infra/sandbox` |
 | Audited | `1.11.0`, image digest `sha256:6328d7fd2f0ff0b4c147c3d05b3df1ce331f4a482eb6e550ecd64ed1fcf906e7`, image ID `sha256:c8c90673082b6d4bf6517bda004cbf8b6059fd17a0866d1971e17cce3da18ee9` |
 | Affected | `1.11.0` verified live; other tags not tested |
@@ -43,7 +43,7 @@ The bypass is **GET-only**: `POST /v1/shell/exec` without a key still returns `4
 
 ```bash
 docker run -d --name aio-test -e SANDBOX_API_KEY=testkey123 \
-  -p 127.0.0.1:18080:8080 ghcr.io/agent-infra/sandbox:latest
+  -p 127.0.0.1:18080:8080 ghcr.io/agent-infra/sandbox:1.11.0
 
 # control: 401
 curl -s -o /dev/null -w '%{http_code}\n' \
@@ -60,7 +60,8 @@ python3 pocs/rce_ws.py
 Expected: `/etc/passwd` without auth; then `uid=1000(gem)`, hostname, and
 `uid=0(root)` from `sudo -n id`.
 
-Controls (all live, `evidence/00_matrix.txt`):
+Controls (all live, `evidence/triage/00_matrix.txt`; pinned-tag re-run in
+`evidence/pinned-1.11.0/`):
 
 | Request | Auth | Status |
 |---|---|---|
@@ -81,6 +82,18 @@ Controls (all live, `evidence/00_matrix.txt`):
 - **Not affected:** non-GET methods on the same paths (still `401`).
 - **Precondition:** network reachability to the gateway. The key is not required.
 
+## Demonstrated vs deployment-dependent
+
+| Claim | Status |
+|---|---|
+| GET auth bypass | **Demonstrated** (matrix t01–t08) |
+| Arbitrary file read | **Demonstrated** (`/etc/passwd` byte-for-byte) |
+| Unauthenticated shell, container root | **Demonstrated** (WS 101; `sudo -n id` → 0) |
+| Jupyter / code-server without credentials | **Demonstrated** (200 / 302) |
+| Host mounts, cloud metadata, lateral movement | **Deployment-dependent, not verified** |
+
+The root shown is inside the sandbox container, not the Docker host.
+
 ## Fix
 
 Primary: match on `$uri` (no arguments) instead of `$request_uri`, or strip the query string
@@ -97,18 +110,20 @@ internal routes; remove passwordless `sudo` from `gem`; bind management ports to
 
 | Path | Contents |
 |---|---|
-| `report_20261121_201810.md` | Full assessment report (PTES/OWASP, CVSS, hashes) |
-| `cve-submission/advisory.md` | Advisory draft: metadata, description, PoC, impact, fix |
+| `report_20261121_201810.md` | Full assessment report (PTES/OWASP, CVSS, hashes; sha256 `f5f406e9…`) |
+| `cve-submission/advisory.md` | Advisory draft: metadata, root cause, PoC, impact, fix |
+| `cve-submission/root-cause/` | Complete `nginx-server-with-auth.conf`, active config, `gem.sh` + auth-selection excerpt |
 | `cve-submission/attack-path-simple.md` | Five-step chain |
 | `cve-submission/attacker-cost.md` | Effort and prerequisites |
-| `cve-submission/range-verification.txt` | What was and was not verified |
-| `evidence/00_matrix.txt` | Eight-case auth matrix with statuses |
-| `evidence/t04_bypass_json.headers` | 200 response headers for the bypass |
-| `evidence/t12_ws_trace.txt` | Raw `101 Switching Protocols`, no auth header, shell frames |
-| `evidence/t09_container_hashes.txt` | Container-side hashes for the nonce and `/etc/passwd` |
-| `evidence/t10_nginx_config.txt` | Active config hash and vulnerable lines |
+| `cve-submission/range-verification.txt` | What was and was not verified, incl. pinned tag |
+| `evidence/triage/00_matrix.txt` | Eight-case auth matrix with statuses |
+| `evidence/triage/t04_bypass_json.headers` | 200 response headers for the bypass |
+| `evidence/triage/t12_ws_trace.txt` | Raw `101 Switching Protocols`, no auth header, shell frames |
+| `evidence/triage/t09_container_hashes.txt` | Container-side hashes for the nonce and `/etc/passwd` |
+| `evidence/triage/t10_nginx_config.txt` | Active config hash and vulnerable lines |
 | `evidence/11_postexploit.txt` | `sudo -n id` → `uid=0(root)` |
-| `evidence/exfil_receipt.bin` | Exfiltrated WS trace (sha256 in report) |
+| `evidence/pinned-1.11.0/` | Re-run against the explicit `1.11.0` tag; matrix, WS, hashes |
+| `pocs/received/exfil_20261121_202320_479200.bin` | Exfiltrated WS trace (sha256 in report) |
 | `cve-submission/MANIFEST.txt` | sha256 of the submission pack |
 
 ## Disclosure

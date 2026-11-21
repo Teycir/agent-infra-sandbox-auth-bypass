@@ -1,0 +1,3 @@
+2026-11-21T20:13:30Z POST /exfil len=1176 sha256=e55218f1d26777b820a75caaa0940fed64173affdef2fb96b51e20a9f4efd2ff file=/home/teycir/BugBounty/agent-infra-sandbox/20261121/200422/pocs/received/exfil_20261121_201330_739436.bin
+2026-11-21T20:15:59Z POST /exfil len=510 sha256=732c9d0b54f878ed91f2d0d60352a9e995dff0aceaf0adc86c674d9dac7deb51 file=/home/teycir/BugBounty/agent-infra-sandbox/20261121/200422/pocs/received/exfil_20261121_201559_952519.bin
+2026-11-21T20:23:20Z POST /exfil len=5151 sha256=12331b35b6678d68fdb329b12cd4652f38b555dc4ecf09eb60e9f1d9f39ab904 file=/home/teycir/BugBounty/agent-infra-sandbox/20261121/200422/pocs/received/exfil_20261121_202320_479200.bin

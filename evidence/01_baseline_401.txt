@@ -1,0 +1,8 @@
+### 2026-11-21T20:13:30Z baseline GET /v1/file/download?path=/etc/passwd (no key)
+HTTP/1.1 401 Unauthorized
+Server: nginx/1.18.0 (Ubuntu)
+Date: Sat, 21 Nov 2026 20:13:30 GMT
+Content-Type: text/html
+Content-Length: 188
+Connection: keep-alive
+

@@ -1,0 +1,6 @@
+### 2026-11-21T20:13:30Z hashes
+e55218f1d26777b820a75caaa0940fed64173affdef2fb96b51e20a9f4efd2ff  /home/teycir/BugBounty/agent-infra-sandbox/20261121/200422/evidence/02_passwd_extracted.txt
+container /etc/passwd sha256:
+e55218f1d26777b820a75caaa0940fed64173affdef2fb96b51e20a9f4efd2ff  /etc/passwd
+sizes:
+1176 /home/teycir/BugBounty/agent-infra-sandbox/20261121/200422/evidence/02_passwd_extracted.txt

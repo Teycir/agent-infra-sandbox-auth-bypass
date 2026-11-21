@@ -1,0 +1,9 @@
+HTTP/1.1 302 Found
+Server: nginx/1.18.0 (Ubuntu)
+Date: Sat, 21 Nov 2026 20:15:59 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 49
+Connection: keep-alive
+Location: ./?x=.json&folder=/home/gem
+Vary: Accept, Accept-Encoding
+

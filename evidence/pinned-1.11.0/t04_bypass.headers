@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Server: nginx/1.18.0 (Ubuntu)
+Date: Sat, 21 Nov 2026 20:33:37 GMT
+Content-Type: application/octet-stream
+Content-Length: 1176
+Connection: keep-alive
+accept-ranges: bytes
+content-disposition: attachment; filename="passwd"
+last-modified: Sat, 21 Nov 2026 20:33:36 GMT
+etag: "5df0e24db220d28c8e008fdd6b0c8dd4"
+
