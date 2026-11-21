@@ -1,0 +1,14 @@
+### final verification 2026-11-21T20:19:57Z
+-- baseline (expect 401)
+401
+-- bypass (expect 200)
+200 1176
+-- passwd hash
+e55218f1d26777b820a75caaa0940fed64173affdef2fb96b51e20a9f4efd2ff  /tmp/v_passwd
+-- terminal-url (expect 200)
+200
+{"success":true,"message":"Terminal URL created successfully","data":"http://127.0.0.1:18080/terminal?session_id=7d88d34a-3b00-4bd0-bd39-3a8c269d08a2","hint":null}
+-- jupyter (expect 200)
+200
+-- code-server (expect 302)
+302 http://127.0.0.1:18080/code-server?x=.json&folder=/home/gem

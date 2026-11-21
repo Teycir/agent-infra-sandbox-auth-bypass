@@ -1,0 +1,7 @@
+### container env/labels 2026-11-21T20:21:58Z
+SANDBOX_API_KEY=testkey123
+browser.source = rs
+browser.version = 146.0.7680.31
+org.opencontainers.image.version = 22.04
+version = 1.11.0
+image=ghcr.io/agent-infra/sandbox:latest imageID=sha256:c8c90673082b6d4bf6517bda004cbf8b6059fd17a0866d1971e17cce3da18ee9

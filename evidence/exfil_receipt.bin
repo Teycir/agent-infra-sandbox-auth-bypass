@@ -1,0 +1,52 @@
+--- request header ---
+GET /v1/shell/ws?session_id=49918419-e870-4cc1-9a9d-0ea3772f56ee&x=.json HTTP/1.1
+Upgrade: websocket
+Host: 127.0.0.1:18080
+Sec-WebSocket-Key: OJUWVDO3JUB79I2YTpwpBQ==
+Sec-WebSocket-Version: 13
+Connection: Upgrade
+
+
+-----------------------
+--- response header ---
+HTTP/1.1 101 Switching Protocols
+Server: nginx/1.18.0 (Ubuntu)
+Date: Sat, 21 Nov 2026 20:22:38 GMT
+Connection: upgrade
+Upgrade: websocket
+Sec-WebSocket-Accept: Y6LCtAvGzQU19pm1xMy5roM0N6w=
+-----------------------
+++Rcv raw: b'\x81~\x01T{"type": "restore_output", "data": "\\u001b[?2004hgem@12feb02d2ef5:~$ export PS1=\'\\\\u@\\\\h:\\\\w$ \'\\r\\n\\u001b[?2004l\\r\\u001b[?2004hgem@12feb02d2ef5:~$ export SESSION_ID=\'49918419-e870-4cc1-9a9d-0ea3772f56ee\'\\r\\n\\u001b[?2004l\\r\\u001b[?2004hgem@12feb02d2ef5:~$ clear\\r\\n\\u001b[?2004l\\r\\u001b[H\\u001b[2J\\u001b[3J\\u001b[?2004hgem@12feb02d2ef5:~$ "}'
+++Rcv decoded: fin=1 opcode=1 data=b'{"type": "restore_output", "data": "\\u001b[?2004hgem@12feb02d2ef5:~$ export PS1=\'\\\\u@\\\\h:\\\\w$ \'\\r\\n\\u001b[?2004l\\r\\u001b[?2004hgem@12feb02d2ef5:~$ export SESSION_ID=\'49918419-e870-4cc1-9a9d-0ea3772f56ee\'\\r\\n\\u001b[?2004l\\r\\u001b[?2004hgem@12feb02d2ef5:~$ clear\\r\\n\\u001b[?2004l\\r\\u001b[H\\u001b[2J\\u001b[3J\\u001b[?2004hgem@12feb02d2ef5:~$ "}'
+++Rcv raw: b'\x81B{"type": "terminal_restored", "data": "Session 49918419 restored"}'
+++Rcv decoded: fin=1 opcode=1 data=b'{"type": "terminal_restored", "data": "Session 49918419 restored"}'
+++Sent raw: b'\x81\xfe\x00\xa9\x94Df\x0b\xeff\x12r\xe4!D1\xb4f\x0fe\xe41\x12)\xb8dDo\xf50\x07)\xaedDn\xf7,\t+\xc0\x16/J\xd3\x01K9\xa4vP:\xa5vW_\xa6tT:\xa6|<&\xf7 Sm\xa3q\x023\xf2p^8\xf0\'Uo\xafd\x0fo\xafd\x0ed\xe70\x08j\xf9!]+\xe3,\tj\xf9-]+\xe71\x02d\xb4i\x08+\xfd ]+\xf1\'\x0ed\xb4\x104B\xd5\x03#T\xd0\x0b(N\xcb\x104B\xd5\x03#&\xa6tT=\xa5uT:\xc0vV9\xa5v^Q\xb9\'\x02>\xf2sSo\xac"R3\xa7 \x058\xf0\x18\x08)\xe9'
+++Sent decoded: fin=1 opcode=1 data=b'{"type": "input", "data": "echo TRIAGE-20261121T202128Z-cd5f75d8f483dc3d; id; hostname; whoami; sudo -n id; echo TRIAGE_DONE_TRIAGE-20261121T202128Z-cd5f75d8f483dc3d\\n"}'
+++Rcv raw: b'\x81~\x00\xbb{"type": "output", "data": "echo TRIAGE-20261121T202128Z-cd5f75d8f483dc3d; id; hostname; whoami; sudo -n id; echo TRIAGE_DONE_TRIAGE-20261121T202128Z-cd5f75d8f483dc3d\\r\\n\\u001b[?2004l\\r"}'
+++Rcv decoded: fin=1 opcode=1 data=b'{"type": "output", "data": "echo TRIAGE-20261121T202128Z-cd5f75d8f483dc3d; id; hostname; whoami; sudo -n id; echo TRIAGE_DONE_TRIAGE-20261121T202128Z-cd5f75d8f483dc3d\\r\\n\\u001b[?2004l\\r"}'
+++Rcv raw: b'\x81J{"type": "output", "data": "TRIAGE-20261121T202128Z-cd5f75d8f483dc3d\\r\\n"}'
+++Rcv decoded: fin=1 opcode=1 data=b'{"type": "output", "data": "TRIAGE-20261121T202128Z-cd5f75d8f483dc3d\\r\\n"}'
+++Rcv raw: b'\x81N{"type": "output", "data": "uid=1000(gem) gid=1000(gem) groups=1000(gem)\\r\\n"}'
+++Rcv decoded: fin=1 opcode=1 data=b'{"type": "output", "data": "uid=1000(gem) gid=1000(gem) groups=1000(gem)\\r\\n"}'
+++Rcv raw: b'\x81.{"type": "output", "data": "12feb02d2ef5\\r\\n"}'
+++Rcv decoded: fin=1 opcode=1 data=b'{"type": "output", "data": "12feb02d2ef5\\r\\n"}'
+++Rcv raw: b'\x81%{"type": "output", "data": "gem\\r\\n"}'
+++Rcv decoded: fin=1 opcode=1 data=b'{"type": "output", "data": "gem\\r\\n"}'
+++Rcv raw: b'\x81H{"type": "output", "data": "uid=0(root) gid=0(root) groups=0(root)\\r\\n"}'
+++Rcv decoded: fin=1 opcode=1 data=b'{"type": "output", "data": "uid=0(root) gid=0(root) groups=0(root)\\r\\n"}'
+++Rcv raw: b'\x81V{"type": "output", "data": "TRIAGE_DONE_TRIAGE-20261121T202128Z-cd5f75d8f483dc3d\\r\\n"}'
+++Rcv decoded: fin=1 opcode=1 data=b'{"type": "output", "data": "TRIAGE_DONE_TRIAGE-20261121T202128Z-cd5f75d8f483dc3d\\r\\n"}'
+++Rcv raw: b'\x81?{"type": "output", "data": "\\u001b[?2004hgem@12feb02d2ef5:~$ "}'
+++Rcv decoded: fin=1 opcode=1 data=b'{"type": "output", "data": "\\u001b[?2004hgem@12feb02d2ef5:~$ "}'
+++Rcv raw: b'\x89\x04_Ks\x9d'
+++Rcv decoded: fin=1 opcode=9 data=b'_Ks\x9d'
+++Sent raw: b'\x8a\x84`\x96\xbd\xd4?\xdd\xceI'
+++Sent decoded: fin=1 opcode=10 data=b'_Ks\x9d'
+++Rcv raw: b'\x81,{"type": "ping", "timestamp": 1795292588665}'
+++Rcv decoded: fin=1 opcode=1 data=b'{"type": "ping", "timestamp": 1795292588665}'
+++Sent raw: b'\x88\x82\x1c\xe2>\xc4\x1f\n'
+++Sent decoded: fin=1 opcode=8 data=b'\x03\xe8'
+### triage WS rerun 2026-11-21T20:22:38.129437+00:00
+mint_status=200 session_id=49918419-e870-4cc1-9a9d-0ea3772f56ee
+---- FRAMES ----
+{"type": "output", "data": "echo TRIAGE-20261121T202128Z-cd5f75d8f483dc3d; id; hostname; whoami; sudo -n id; echo TRIAGE_DONE_TRIAGE-20261121T202128Z-cd5f75d8f483dc3d\r\n\u001b[?2004l\r"}{"type": "output", "data": "TRIAGE-20261121T202128Z-cd5f75d8f483dc3d\r\n"}{"type": "output", "data": "uid=1000(gem) gid=1000(gem) groups=1000(gem)\r\n"}{"type": "output", "data": "12feb02d2ef5\r\n"}{"type": "output", "data": "gem\r\n"}{"type": "output", "data": "uid=0(root) gid=0(root) groups=0(root)\r\n"}{"type": "output", "data": "TRIAGE_DONE_TRIAGE-20261121T202128Z-cd5f75d8f483dc3d\r\n"}{"type": "output", "data": "\u001b[?2004hgem@12feb02d2ef5:~$ "}{"type": "ping", "timestamp": 1795292588665}

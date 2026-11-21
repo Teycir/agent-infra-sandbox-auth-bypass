@@ -1,0 +1,9 @@
+### nginx active config 2026-11-21T20:21:58Z
+767145b6d19d4ce847400ac6ca4b6d9c7a5c8b3043133d1c1e4705600acaaf68  /opt/gem/nginx-server-active.conf
+611f9140300d3997471836938cce851815d4a2ebbb15400295d3c1613ed2a728  /opt/gem/nginx-server-with-auth.conf
+11:map "$request_method:$request_uri" $target_workflow {
+16:    "GET:/v1/ping" @proxy_without_auth;
+19:    "~*^GET:.+\.(js|css|svg|woff|json|ico|png|jpg|jpeg|gif|webp|wasm|ttf|woff2)$" @proxy_without_auth;
+42:        auth_request /_auth_handler;
+57:    location @proxy_without_auth {
+86:        proxy_set_header X-Original-URI $request_uri;

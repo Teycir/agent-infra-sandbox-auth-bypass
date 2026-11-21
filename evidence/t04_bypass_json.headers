@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Server: nginx/1.18.0 (Ubuntu)
+Date: Sat, 21 Nov 2026 20:21:45 GMT
+Content-Type: application/octet-stream
+Content-Length: 41
+Connection: keep-alive
+accept-ranges: bytes
+content-disposition: attachment; filename="triage_nonce.txt"
+last-modified: Sat, 21 Nov 2026 20:21:29 GMT
+etag: "1eb78bb367b59d67fcafa2f43a51f4aa"
+

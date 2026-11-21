@@ -1,0 +1,8 @@
+### container-side hashes 2026-11-21T20:21:58Z
+2daf422a58d8ec39b460a5e19369b77e41a5fa509aed2ae77e4059a46f5c195d  /tmp/triage_nonce.txt
+e55218f1d26777b820a75caaa0940fed64173affdef2fb96b51e20a9f4efd2ff  /etc/passwd
+cdffa4c079846bde275dc8f7cff9e8b43dbf729afe5951800256da94b2647515  /etc/hostname
+--- hostname
+12feb02d2ef5
+--- nonce
+TRIAGE-20261121T202128Z-cd5f75d8f483dc3d

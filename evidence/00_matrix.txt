@@ -1,0 +1,8 @@
+t01_baseline_no_key | GET http://127.0.0.1:18080/v1/file/download?path=/tmp/triage_nonce.txt | auth=none | 401 188
+t02_wrong_key | GET http://127.0.0.1:18080/v1/file/download?path=/tmp/triage_nonce.txt | auth=X-AIO-API-Key: wrongkey | 401 188
+t03_correct_key | GET http://127.0.0.1:18080/v1/file/download?path=/tmp/triage_nonce.txt | auth=X-AIO-API-Key: testkey123 | 200 41
+t04_bypass_json | GET http://127.0.0.1:18080/v1/file/download?path=/tmp/triage_nonce.txt&x=.json | auth=none | 200 41
+t05_negative_txt | GET http://127.0.0.1:18080/v1/file/download?path=/tmp/triage_nonce.txt&x=.txt | auth=none | 401 188
+t06_sandbox_no_key | GET http://127.0.0.1:18080/v1/sandbox | auth=none | 401 188
+t07_sandbox_bypass | GET http://127.0.0.1:18080/v1/sandbox?x=.json | auth=none | 200 2995
+t08_post_no_key | POST http://127.0.0.1:18080/v1/shell/exec | auth=none | 401 188

