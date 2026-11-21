@@ -115,7 +115,7 @@ internal routes; remove passwordless `sudo` from `gem`; bind management ports to
 
 | Path | Contents |
 |---|---|
-| `report_20261121_201810.md` | Full assessment report (PTES/OWASP, CVSS, hashes; sha256 `7d8aaeee…`) |
+| `report_20261121_201810.md` | Full assessment report (PTES/OWASP, CVSS, hashes; sha256 `fdd60c9c…`) |
 | `cve-submission/advisory.md` | Advisory draft: metadata, root cause, PoC, impact, fix |
 | `cve-submission/root-cause/` | Complete `nginx-server-with-auth.conf`, active config, `gem.sh` + auth-selection excerpt |
 | `cve-submission/attack-path-simple.md` | Five-step chain |
@@ -151,7 +151,7 @@ after coordinated disclosure.
 
 | Date | Event |
 |---|---|
-| 2026-11-21 | Final report/hash pack sealed (`report_20261121_201810.md`, sha256 `7d8aaeee…`) |
+| 2026-11-21 | Final report/hash pack sealed (`report_20261121_201810.md`, sha256 `fdd60c9c…`) |
 | 2026-11-21 21:03Z | Vendor notification sent via Proton Mail to best-effort maintainer contacts |
 | 2026-11-21 21:03:09Z | Proton bounce for `zhangjingtian.oana@bytedance.com` only (`550 user not found`) |
 | 2026-11-23 (planned) | If no vendor feedback, submit to VulnCheck |
