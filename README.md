@@ -146,3 +146,12 @@ notification used best-effort maintainer addresses identified from package/GitHu
 The sent message is archived at `evidence/disclosure/20261121T210302Z_vendor_email.eml`; contact
 research is in `evidence/disclosure/CONTACT_RESEARCH.txt`. Awaiting vendor response; publish only
 after coordinated disclosure.
+
+### Timeline (UTC)
+
+| Date | Event |
+|---|---|
+| 2026-11-21 | Final report/hash pack sealed (`report_20261121_201810.md`, sha256 `7d8aaeee…`) |
+| 2026-11-21 21:03Z | Vendor notification sent via Proton Mail to best-effort maintainer contacts |
+| 2026-11-21 21:03:09Z | Proton bounce for `zhangjingtian.oana@bytedance.com` only (`550 user not found`) |
+| 2026-11-23 (planned) | If no vendor feedback, submit to VulnCheck |
