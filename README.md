@@ -1,8 +1,8 @@
 # agent-infra/sandbox — nginx auth bypass → unauthenticated file download → root RCE
 
 The sandbox gateway decides whether to require an API key by matching the **full request URI,
-including the query string**. Appending `?x=.json` to any `GET` matches the static-asset rule
-and routes the request to `@proxy_without_auth`, skipping `auth_request`. `aiod` does not
+including the query string**. Appending `?x=.json` to a protected GET endpoint triggers the
+unauthenticated routing path; the impact depends on the underlying endpoint. `aiod` does not
 re-check the key. The result is unauthenticated file download via `/v1/file/download` and an
 unauthenticated WebSocket shell that runs as `gem` with passwordless `sudo` to root (full
 container filesystem access as root).
@@ -18,6 +18,10 @@ container filesystem access as root).
 | CVE | none assigned |
 | Reported by | Teycir ([github.com/Teycir](https://github.com/Teycir)) |
 | Status | Unfixed in `1.11.0`; not yet reported to vendor or a CNA |
+
+CVSS 9.8 is assessed against the sandbox security boundary: container-root execution permits
+unrestricted access to resources available within the container. Host-level compromise is not
+claimed.
 
 ## Issue
 
@@ -111,7 +115,7 @@ internal routes; remove passwordless `sudo` from `gem`; bind management ports to
 
 | Path | Contents |
 |---|---|
-| `report_20261121_201810.md` | Full assessment report (PTES/OWASP, CVSS, hashes; sha256 `194996ff…`) |
+| `report_20261121_201810.md` | Full assessment report (PTES/OWASP, CVSS, hashes; sha256 `7d8aaeee…`) |
 | `cve-submission/advisory.md` | Advisory draft: metadata, root cause, PoC, impact, fix |
 | `cve-submission/root-cause/` | Complete `nginx-server-with-auth.conf`, active config, `gem.sh` + auth-selection excerpt |
 | `cve-submission/attack-path-simple.md` | Five-step chain |
