@@ -1,0 +1,62 @@
+This is the mail system at Proton Mail.
+
+Your email could not be delivered to one or more recipients.
+See below for the delivery error and email.
+
+The most common reasons for undelivered email are wrong recipient address or wrong configuration on the recipient mail server.
+
+Learn more about delivery errors in our knowledge base: https://proton.me/support/smtp-errors
+
+
+<zhangjingtian.oana@bytedance.com>: host mx1.bytedance.com[35.172.32.95] said:
+    550 verify address failed, User not found zhangjingtian.oana@bytedance.com
+    (in reply to RCPT TO command)
+
+----------------------------------------------
+message/delivery-status
+----------------------------------------------
+Reporting-MTA: dns; mail-24424.protonmail.ch
+X-Postfix-Queue-ID: 4jX4Rf5rgjzMqTqG
+X-Postfix-Sender: rfc822; teycir@protonmail.com
+Arrival-Date: Sat, 21 Nov 2026 21:03:09 +0000 (UTC)
+
+Final-Recipient: rfc822; zhangjingtian.oana@bytedance.com
+Original-Recipient: rfc822;zhangjingtian.oana@bytedance.com
+Action: failed
+Status: 5.0.0
+Remote-MTA: dns; mx1.bytedance.com
+Diagnostic-Code: smtp; 550 verify address failed, User not found
+    zhangjingtian.oana@bytedance.com
+
+----------------------------------------------
+text/rfc822-headers
+----------------------------------------------
+Return-Path: <teycir@protonmail.com>
+Received: from vmk-taskfra1-02.plabs.ch (vmk-taskfra1-02.data.plabs.ch [10.2.161.135])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail-24424.protonmail.ch (Postfix) with ESMTPS id 4jX4Rf5rgjzMqTqG;
+	Sat, 21 Nov 2026 21:03:09 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1795294990; x=1795554190;
+	bh=WlG8AbbxH8y+seoT8uZW7qcX9x3COv1WTuXZN9YYhYw=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=f/YIqsrhneypmwcc0BnhArxh20sumPhGdtQ382/WV+/McxuiR9pQ5D1y0lTHiBHNn
+	 JfR/NeJbtbzXkVAciks88iuOqJT0UptGXcz8CVgeafItZcouaaUF603neAo4RMmofa
+	 AQxSaD2ynCdsJ1CRHaaAzRvudaJtKio1q/PFKyC33I0c4agkxbi9lK/TxH5VFPBeQ1
+	 ZvZQASxnRx1eHrlEIulGZxHh0qVVz32ptnRA5pUqwHdyVeLh9NKA8gdMDkwFRW3Ijh
+	 TloLB1Nrrh23tZ5lAXynR8QwzBsXExuNcJbjeyMMS+VsQxeXneuFOnUh/cv2khgL8K
+	 c3P+HkzMpbIKg==
+Date: Sat, 21 Nov 2026 21:03:06 +0000
+To: "songhaonan.773@bytedance.com" <songhaonan.773@bytedance.com>
+From: teycir <teycir@protonmail.com>
+Cc: "zhangjingtian.oana@bytedance.com" <zhangjingtian.oana@bytedance.com>, "chaolinjin@gmail.com" <chaolinjin@gmail.com>
+Subject: =?utf-8?Q?[Security]_Critical_auth_bypass_in_agent-infra/sandbox_1.11.0_=E2=80=94_unauthenticated_file_download_+_container-root_RCE?=
+Message-ID: <jpAy0C6IXxtOtu8j4Kqu9L-j6VTA8au-BNrgO-HwvgQamD6IbNYKleWkTWxrA4aAkF9thHjRpSn1T3Y7av9FLb4jA8o6US9TtC6U1iWFrH4=@protonmail.com>
+Feedback-ID: 9369692:user:proton
+X-Pm-Message-ID: ca7a95a076278be3ce9626a5e7bd753d4999ace3
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="b1=_Gad7Zz6KiKi18fXQHFelKdenlKpHnx9b0aZzIIlhY"

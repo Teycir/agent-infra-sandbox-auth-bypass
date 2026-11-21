@@ -1,0 +1,36 @@
+# Vendor contact research — agent-infra/sandbox 1.11.0
+Checked: 2026-11-21 UTC
+
+Upstream repository: https://github.com/agent-infra/sandbox
+
+## Official security channel
+
+- No `SECURITY.md` / `security.md` in the repository.
+- GitHub security policy: `isSecurityPolicyEnabled=false`, `securityPolicyUrl=""`, `contactLinks=[]`.
+- Result: no official security email or private vulnerability reporting contact found.
+
+## Best-effort maintainer contacts
+
+Sources: related SDK/package metadata and GitHub commit history. These are maintainer addresses,
+not an official security channel.
+
+- `songhaonan.773@bytedance.com` — `songhn233`, active commit author (used as To)
+- `zhangjingtian.oana@bytedance.com` — `Oanakiaja`, commit author (used as Cc; BOUNCED 550 user not found)
+- `chaolinjin@gmail.com` — `ycjcl868` (used as Cc)
+- `oanakiaja@gmail.com` — `Oanakiaja` npm maintainer address (alternate; not used)
+- `zzxwill@gmail.com` — historical contributor (not used)
+
+## Sent message
+
+- Date: 2026-11-21T21:03:02Z (Proton Mail)
+- To: `songhaonan.773@bytedance.com`
+- Cc: `zhangjingtian.oana@bytedance.com`, `chaolinjin@gmail.com`
+- Subject: `[Security] Critical auth bypass in agent-infra/sandbox 1.11.0 — unauthenticated file download + container-root RCE`
+- Message-ID: `<jpAy0C6IXxtOtu8j4Kqu9L-j6VTA8au-BNrgO-HwvgQamD6IbNYKleWkTWxrA4aAkF9thHjRpSn1T3Y7av9FLb4jA8o6US9TtC6U1iWFrH4=@protonmail.com>`
+- Attachment: `agent-infra-sandbox-auth-bypass.zip` (468127 bytes)
+
+## Bounce
+
+- 2026-11-21T21:03:09Z Proton Mail bounce for `zhangjingtian.oana@bytedance.com` only:
+  `host mx1.bytedance.com said: 550 verify address failed, User not found`.
+- No bounce listed for `songhaonan.773@bytedance.com` or `chaolinjin@gmail.com`.

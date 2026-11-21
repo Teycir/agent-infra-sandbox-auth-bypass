@@ -17,7 +17,7 @@ container filesystem access as root).
 | CWE | CWE-288 (Authentication Bypass Using an Alternate Path), CWE-306 (Missing Authentication) |
 | CVE | none assigned |
 | Reported by | Teycir ([github.com/Teycir](https://github.com/Teycir)) |
-| Status | Unfixed in `1.11.0`; not yet reported to vendor or a CNA |
+| Status | Unfixed in `1.11.0`; vendor notified 2026-11-21 via best-effort maintainer contacts (no upstream `SECURITY.md`/security policy); CNA not yet contacted |
 
 CVSS 9.8 is assessed against the sandbox security boundary: container-root execution permits
 unrestricted access to resources available within the container. Host-level compromise is not
@@ -129,9 +129,20 @@ internal routes; remove passwordless `sudo` from `gem`; bind management ports to
 | `evidence/11_postexploit.txt` | `sudo -n id` → `uid=0(root)` |
 | `evidence/pinned-1.11.0/` | Re-run against the explicit `1.11.0` tag; matrix, WS, hashes |
 | `pocs/received/exfil_20261121_202320_479200.bin` | Exfiltrated WS trace (sha256 in report) |
+| `evidence/disclosure/20261121T210302Z_vendor_email.eml` | Sent vendor notification (Proton Mail, with attached pack) |
+| `evidence/disclosure/20261121T210309Z_bounce_zhangjingtian_oana_at_bytedance_com.txt` | Proton bounce for one CC only |
+| `evidence/disclosure/CONTACT_RESEARCH.txt` | No `SECURITY.md`/security contact; best-effort maintainer emails |
+| `evidence/disclosure/hashes.txt` | sha256 for disclosure artifacts |
 | `cve-submission/MANIFEST.txt` | sha256 of the submission pack |
 
 ## Disclosure
 
-No CVE assigned. Not yet sent to the vendor or a CNA. The repository is a local disclosure
-pack; publish only after vendor notification and the agreed embargo.
+No CVE assigned; no CNA contacted yet. Upstream has no published `SECURITY.md`/security policy or
+contact links (`isSecurityPolicyEnabled=false`, `contactLinks=[]`), so the 2026-11-21 vendor
+notification used best-effort maintainer addresses identified from package/GitHub metadata:
+`songhaonan.773@bytedance.com` (To), `zhangjingtian.oana@bytedance.com` and
+`chaolinjin@gmail.com` (Cc). Proton reported a bounce only for `zhangjingtian.oana@bytedance.com`
+(`550 verify address failed, User not found`); no bounce was listed for the other recipients.
+The sent message is archived at `evidence/disclosure/20261121T210302Z_vendor_email.eml`; contact
+research is in `evidence/disclosure/CONTACT_RESEARCH.txt`. Awaiting vendor response; publish only
+after coordinated disclosure.
