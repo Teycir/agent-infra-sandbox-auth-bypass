@@ -1,10 +1,11 @@
-# agent-infra/sandbox — nginx auth bypass → unauthenticated file read → root RCE
+# agent-infra/sandbox — nginx auth bypass → unauthenticated file download → root RCE
 
 The sandbox gateway decides whether to require an API key by matching the **full request URI,
 including the query string**. Appending `?x=.json` to any `GET` matches the static-asset rule
 and routes the request to `@proxy_without_auth`, skipping `auth_request`. `aiod` does not
-re-check the key. The result is unauthenticated arbitrary file read and an unauthenticated
-WebSocket shell that runs as `gem` with passwordless `sudo` to root.
+re-check the key. The result is unauthenticated file download via `/v1/file/download` and an
+unauthenticated WebSocket shell that runs as `gem` with passwordless `sudo` to root (full
+container filesystem access as root).
 
 | | |
 |---|---|
@@ -87,7 +88,7 @@ Controls (all live, `evidence/triage/00_matrix.txt`; pinned-tag re-run in
 | Claim | Status |
 |---|---|
 | GET auth bypass | **Demonstrated** (matrix t01–t08) |
-| Arbitrary file read | **Demonstrated** (`/etc/passwd` byte-for-byte) |
+| Unauthenticated file download | **Demonstrated** (`/etc/passwd` byte-for-byte via `/v1/file/download`) |
 | Unauthenticated shell, container root | **Demonstrated** (WS 101; `sudo -n id` → 0) |
 | Jupyter / code-server without credentials | **Demonstrated** (200 / 302) |
 | Host mounts, cloud metadata, lateral movement | **Deployment-dependent, not verified** |
@@ -110,7 +111,7 @@ internal routes; remove passwordless `sudo` from `gem`; bind management ports to
 
 | Path | Contents |
 |---|---|
-| `report_20261121_201810.md` | Full assessment report (PTES/OWASP, CVSS, hashes; sha256 `f5f406e9…`) |
+| `report_20261121_201810.md` | Full assessment report (PTES/OWASP, CVSS, hashes; sha256 `194996ff…`) |
 | `cve-submission/advisory.md` | Advisory draft: metadata, root cause, PoC, impact, fix |
 | `cve-submission/root-cause/` | Complete `nginx-server-with-auth.conf`, active config, `gem.sh` + auth-selection excerpt |
 | `cve-submission/attack-path-simple.md` | Five-step chain |
