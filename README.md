@@ -17,7 +17,7 @@ container filesystem access as root).
 | CWE | CWE-288 (Authentication Bypass Using an Alternate Path), CWE-306 (Missing Authentication) |
 | CVE | none assigned |
 | Reported by | Teycir ([github.com/Teycir](https://github.com/Teycir)) |
-| Status | Unfixed in `1.11.0`; vendor notified 2026-11-21 via best-effort maintainer contacts (no upstream `SECURITY.md`/security policy); CNA not yet contacted |
+| Status | Unfixed in `1.11.0` and upstream HEAD `7f1afaf`; vendor notified 2026-11-21 via best-effort maintainer contacts (no upstream `SECURITY.md`/security policy); CNA not yet contacted |
 
 CVSS 9.8 is assessed against the sandbox security boundary: container-root execution permits
 unrestricted access to resources available within the container. Host-level compromise is not
@@ -135,6 +135,27 @@ internal routes; remove passwordless `sudo` from `gem`; bind management ports to
 | `evidence/disclosure/hashes.txt` | sha256 for disclosure artifacts |
 | `cve-submission/MANIFEST.txt` | sha256 of the submission pack |
 
+
+
+## Fix verification — upstream `agent-infra/sandbox` HEAD `7f1afaf` (2026-11-23 17:55 UTC)
+
+Cloned `https://github.com/agent-infra/sandbox.git` at HEAD `7f1afaf`
+(commit `docs(daemon): CDP gateway CORS, 1.0.1 image changelog and tags (#244)`),
+past v1.11.0 release tag `6bd4b52`.
+Inspected the full commit range `v1.11.0..HEAD` (10 commits) and the repository tree.
+
+| Check | Result |
+|---|---|
+| v1.11.0 tag commit | `6bd4b52bbfcbc629040aac1f72abfb7989de970b` |
+| Current HEAD | `7f1afaf8d82bd30531a19caeb1a24dfebbc97d8c` |
+| v1.11.0 ancestor of HEAD? | **YES** |
+| Commits after v1.11.0 | 10 commits, all docs-only (website, CDP, images, evaluation) |
+| Commits touching nginx config / `$request_uri` / `target_workflow` / `proxy_without_auth` | **None** |
+| Commits touching auth bypass / API key enforcement in `aiod` | **None** |
+| nginx config (`nginx-server-active.conf`) in source tree | **Not present** — baked into container image `ghcr.io/agent-infra/sandbox:1.11.0` |
+
+**Conclusion: RT-01 remains fully exploitable.** No fix released, no CVE assigned, no new image tag beyond `1.11.0`/`latest`. The vulnerable `$request_method:$request_uri` map with the static-extension regex is still the documented gateway design (see `website/docs/en/daemon/basic/authentication.md`, which describes `/internal/auth` as the nginx `auth_request` subrequest but does not change the query-string matching behavior).
+
 ## Disclosure
 
 No CVE assigned; no CNA contacted yet. Upstream has no published `SECURITY.md`/security policy or
@@ -154,4 +175,4 @@ after coordinated disclosure.
 | 2026-11-21 | Final report/hash pack sealed (`report_20261121_201810.md`, sha256 `fdd60c9c…`) |
 | 2026-11-21 21:03Z | Vendor notification sent via Proton Mail to best-effort maintainer contacts |
 | 2026-11-21 21:03:09Z | Proton bounce for `zhangjingtian.oana@bytedance.com` only (`550 user not found`) |
-| 2026-11-23 (planned) | If no vendor feedback, submit to VulnCheck |
+| 2026-11-23 17:55Z | Upstream `agent-infra/sandbox` re-checked at HEAD `7f1afaf` (past v1.11.0 tag `6bd4b52`); **no fix** — all commits after v1.11.0 are docs-only, none touch nginx config or `$request_uri` auth bypass |
