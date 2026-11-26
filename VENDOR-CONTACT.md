@@ -28,7 +28,8 @@ gh api graphql -f query='query{repository(owner:"agent-infra",name:"sandbox"){is
 | Subject | `[Security] Critical auth bypass in agent-infra/sandbox 1.11.0 — unauthenticated file download + container-root RCE` |
 | Message-ID | `<jpAy0C6IXxtOtu8j4Kqu9L-j6VTA8au-BNrgO-HwvgQamD6IbNYKleWkTWxrA4aAkF9thHjRpSn1T3Y7av9FLb4jA8o6US9TtC6U1iWFrH4=@protonmail.com>` |
 | Attachment | `agent-infra-sandbox-auth-bypass.zip` (full evidence package) |
-| Raw message | `evidence/disclosure/20261121T210302Z_vendor_email.eml` (646,764 bytes) |
+| Raw message | [`evidence/disclosure/20261121T210302Z_vendor_email.eml`](evidence/disclosure/20261121T210302Z_vendor_email.eml) (646,764 bytes) |
+| Rendered copy (viewable in browser) | [`evidence/disclosure/20261121T210302Z_vendor_email.eml.txt`](evidence/disclosure/20261121T210302Z_vendor_email.eml.txt) — byte-identical, text/plain |
 | sha256 | `cb5ce17ad601152adc1465a3f4ff2a647ca70f5c0dd6bc9087d4ebb87787fb11` |
 
 Verbatim headers from the raw message:
@@ -111,6 +112,7 @@ and deferred to the vendor/CNA; no fixed-day embargo is proposed.
 | Artifact | sha256 |
 |---|---|
 | `20261121T210302Z_vendor_email.eml` | `cb5ce17ad601152adc1465a3f4ff2a647ca70f5c0dd6bc9087d4ebb87787fb11` |
+| `20261121T210302Z_vendor_email.eml.txt` | `cb5ce17ad601152adc1465a3f4ff2a647ca70f5c0dd6bc9087d4ebb87787fb11` (byte-identical copy) |
 | `20261121T210309Z_bounce_zhangjingtian_oana_at_bytedance_com.txt` | `00bdc45ae24664540e5a92ebb518a1042e9b3b3366d09d0d0018eb12c0372803` |
 | `CONTACT_RESEARCH.txt` | `4bfe67c8ff6f91a24b7af7413dda3f5684ecb972bfa8300821a371ff127aeb31` |
 
