@@ -1,0 +1,8 @@
+-- control (expect 401)
+401
+-- bypass (expect 200)
+200 1176
+-- suffix control (expect 401)
+401
+-- terminal-url (expect 200)
+{"success":true,"message":"Terminal URL created successfully","data":"http://127.0.0.1:18081/terminal?session_id=8e3555e2-23da-422b-a0c2-d5ed0f669777","hint":null}

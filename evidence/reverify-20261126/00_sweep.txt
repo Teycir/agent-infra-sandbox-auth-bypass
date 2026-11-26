@@ -1,0 +1,2 @@
+sweep_start_utc=2026-11-26T12:47:09Z
+sweep_end_utc=2026-11-26T12:47:29Z

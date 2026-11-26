@@ -1,0 +1,2 @@
+[2026-11-26T12:47:37.854369+00:00] session_id=8f517e53-c456-4a8d-87af-59a8f3ecba8e
+{"type": "output", "data": "\r\u001b[Kgem@c46cd6f9a7c2:~$ "}{"type": "output", "data": "sudo -n id; echo ROOTPROOF_$(sudo -n id -u)\r\n\u001b[?2004l\r"}{"type": "output", "data": "uid=0(root) gid=0(root) groups=0(root)\r\n"}{"type": "output", "data": "ROOTPROOF_0\r\n"}

@@ -18,6 +18,8 @@ container filesystem access as root).
 | CVE | none assigned |
 | Reported by | Teycir ([github.com/Teycir](https://github.com/Teycir)) |
 | Status | Unfixed in `1.11.0` and upstream HEAD `7f1afaf`; vendor notified 2026-11-21 via best-effort maintainer contacts (no upstream `SECURITY.md`/security policy); CNA not yet contacted |
+| Vendor contact | **2026-11-21T21:03:02Z** — raw email, Message-ID and bounce in [VENDOR-CONTACT.md](VENDOR-CONTACT.md) |
+| Timeline | Full UTC disclosure history in [TIMELINE.md](TIMELINE.md) |
 
 CVSS 9.8 is assessed against the sandbox security boundary: container-root execution permits
 unrestricted access to resources available within the container. Host-level compromise is not
