@@ -15,7 +15,7 @@
 | 2026-11-26T12:47:29Z | Sweep end; test container removed | `evidence/reverify-20261126/00_sweep.txt` |
 | 2026-11-26T12:49Z | VulnCheck submission package prepared | this directory |
 | 2026-11-26T12:55Z | Report repo made public; `VENDOR-CONTACT.md` + `TIMELINE.md` added as contact proof | repo HTTP 200 |
-| _TBD_ | VulnCheck form submitted — record ticket/case ID here | — |
+| 2026-11-26T13:05:50Z | VulnCheck report submitted — ID `3fd9874f-480e-49c5-868a-2b0bf24d1a6b` | `https://vulncheck.com/advisories/report` |
 | _TBD_ | CVE assigned / vendor response | — |
 
 ## Notes

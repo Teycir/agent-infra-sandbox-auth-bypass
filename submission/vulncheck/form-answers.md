@@ -14,6 +14,7 @@ One vulnerability per submission. Captcha is completed by the reporter.
 | Product URL | `https://github.com/agent-infra/sandbox` |
 | Tested Version(s) | `ghcr.io/agent-infra/sandbox:1.11.0` — tag digest `sha256:6328d7fd2f0ff0b4c147c3d05b3df1ce331f4a482eb6e550ecd64ed1fcf906e7` (identical to `latest` at test time), image ID `sha256:c8c90673082b6d4bf6517bda004cbf8b6059fd17a0866d1971e17cce3da18ee9`; upstream HEAD `7f1afaf8d82bd30531a19caeb1a24dfebbc97d8c` re-checked 2026-11-26, still vulnerable |
 | Vulnerability Details | paste all of `details-RT-01.md` |
+| VulnCheck report ID | `3fd9874f-480e-49c5-868a-2b0bf24d1a6b` (submitted 2026-11-26T13:05:50Z) |
 | Coordinate disclosure? | `Yes — VulnCheck handles vendor outreach` (vendor unresponsive since 2026-11-21; no security policy exists) |
 | Already reported to supplier? | `Yes — email to best-effort maintainer addresses on 2026-11-21T21:03:02Z (Proton Mail). Message-ID <jpAy0C6IXxtOtu8j4Kqu9L-j6VTA8au-BNrgO-HwvgQamD6IbNYKleWkTWxrA4aAkF9thHjRpSn1T3Y7av9FLb4jA8o6US9TtC6U1iWFrH4=@protonmail.com>. No SECURITY.md / no GitHub private advisory available. No reply; one Cc bounced 550.` |
 | Previously requested CVE from MITRE w/o response? | `No` |

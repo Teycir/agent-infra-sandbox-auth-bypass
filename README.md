@@ -17,7 +17,7 @@ container filesystem access as root).
 | CWE | CWE-288 (Authentication Bypass Using an Alternate Path), CWE-306 (Missing Authentication) |
 | CVE | none assigned |
 | Reported by | Teycir ([github.com/Teycir](https://github.com/Teycir)) |
-| Status | Unfixed in `1.11.0` and upstream HEAD `7f1afaf`; vendor notified 2026-11-21T21:03:02Z via best-effort maintainer contacts ([read the email](evidence/disclosure/20261121T210302Z_vendor_email.md) · [raw .eml](evidence/disclosure/20261121T210302Z_vendor_email.eml)); no upstream `SECURITY.md`/security policy; CNA not yet contacted |
+| Status | Unfixed in `1.11.0` and upstream HEAD `7f1afaf`; vendor notified 2026-11-21T21:03:02Z via best-effort maintainer contacts ([read the email](evidence/disclosure/20261121T210302Z_vendor_email.md) · [raw .eml](evidence/disclosure/20261121T210302Z_vendor_email.eml)); no upstream `SECURITY.md`/security policy; VulnCheck report `3fd9874f-480e-49c5-868a-2b0bf24d1a6b` submitted 2026-11-26 |
 | Vendor contact | **2026-11-21T21:03:02Z** — raw email, Message-ID and bounce in [VENDOR-CONTACT.md](VENDOR-CONTACT.md) |
 | Timeline | Full UTC disclosure history in [TIMELINE.md](TIMELINE.md) |
 

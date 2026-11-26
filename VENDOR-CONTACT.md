@@ -119,5 +119,5 @@ and deferred to the vendor/CNA; no fixed-day embargo is proposed.
 
 ## 6. Later disclosure step
 
-VulnCheck submission package prepared 2026-11-26 (`submission/vulncheck/`); the form submission is
-pending (manual captcha). Ticket ID will be recorded in `TIMELINE.md`.
+Submitted to VulnCheck 2026-11-26 (`submission/vulncheck/`), report ID
+`3fd9874f-480e-49c5-868a-2b0bf24d1a6b`. Vendor coordination and CVE assignment are now with VulnCheck.

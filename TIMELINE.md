@@ -15,7 +15,7 @@
 | 2026-11-26T12:47:37Z | Upstream HEAD re-checked via `git ls-remote`: still `7f1afaf`, no fix | `evidence/reverify-20261126/00_sweep.txt` |
 | 2026-11-26T12:49:53Z | VulnCheck submission package prepared; report archived | `submission/vulncheck/`, `~/BugBounty/agent-infra-sandbox/20261126/124953/` |
 | 2026-11-26T12:55Z | This repository made public with vendor-contact proof and timeline | this file, `VENDOR-CONTACT.md` |
-| _TBD_ | VulnCheck form submitted — record ticket/case ID here | — |
+| 2026-11-26T13:05:50Z | VulnCheck report submitted — ID `3fd9874f-480e-49c5-868a-2b0bf24d1a6b` | `https://vulncheck.com/advisories/report` |
 | _TBD_ | Vendor response / CVE assigned | — |
 
 ## Notes
