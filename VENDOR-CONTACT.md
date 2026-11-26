@@ -29,7 +29,8 @@ gh api graphql -f query='query{repository(owner:"agent-infra",name:"sandbox"){is
 | Message-ID | `<jpAy0C6IXxtOtu8j4Kqu9L-j6VTA8au-BNrgO-HwvgQamD6IbNYKleWkTWxrA4aAkF9thHjRpSn1T3Y7av9FLb4jA8o6US9TtC6U1iWFrH4=@protonmail.com>` |
 | Attachment | `agent-infra-sandbox-auth-bypass.zip` (full evidence package) |
 | Raw message | [`evidence/disclosure/20261121T210302Z_vendor_email.eml`](evidence/disclosure/20261121T210302Z_vendor_email.eml) (646,764 bytes) |
-| Rendered copy (viewable in browser) | [`evidence/disclosure/20261121T210302Z_vendor_email.eml.txt`](evidence/disclosure/20261121T210302Z_vendor_email.eml.txt) — byte-identical, text/plain |
+| Rendered exhibit (readable on GitHub) | [`evidence/disclosure/20261121T210302Z_vendor_email.md`](evidence/disclosure/20261121T210302Z_vendor_email.md) — headers + decoded body |
+| Text copy (browser-viewable) | [`evidence/disclosure/20261121T210302Z_vendor_email.eml.txt`](evidence/disclosure/20261121T210302Z_vendor_email.eml.txt) — byte-identical, text/plain |
 | sha256 | `cb5ce17ad601152adc1465a3f4ff2a647ca70f5c0dd6bc9087d4ebb87787fb11` |
 
 Verbatim headers from the raw message:
