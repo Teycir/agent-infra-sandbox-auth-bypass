@@ -190,8 +190,8 @@ Canonical history: [`TIMELINE.md`](TIMELINE.md).
 
 ### Timeline (UTC)
 
-| Date (UTC) | Event |
-|---|---|
+| Date (UTC) | Event | Evidence |
+|---|---|---|
 | 2026-11-21T20:13:30Z | Exploit start; first verified auth bypass against `1.11.0` | `evidence/00_timestamps.txt` |
 | 2026-11-21T20:15:59Z | Container root verified (`sudo -n id` → `uid=0`) | `evidence/00_timestamps.txt`, `evidence/11_postexploit.txt` |
 | 2026-11-21T20:18:10Z | Report sealed | `report_20261121_201810.md` |
