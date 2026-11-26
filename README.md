@@ -25,6 +25,19 @@ CVSS 9.8 is assessed against the sandbox security boundary: container-root execu
 unrestricted access to resources available within the container. Host-level compromise is not
 claimed.
 
+## Contents
+
+- [Issue](#issue)
+- [Reproduce](#reproduce)
+- [Scope](#scope)
+- [Demonstrated vs deployment-dependent](#demonstrated-vs-deployment-dependent)
+- [Fix](#fix)
+- [Evidence](#evidence)
+- [Fix verification](#fix-verification)
+- [Disclosure](#disclosure)
+- [Timeline](#timeline-utc)
+- [Vendor contact](VENDOR-CONTACT.md)
+
 ## Issue
 
 `/opt/gem/nginx-server-active.conf` (sha256 `767145b6d19d4ce847400ac6ca4b6d9c7a5c8b3043133d1c1e4705600acaaf68`):
@@ -139,7 +152,7 @@ internal routes; remove passwordless `sudo` from `gem`; bind management ports to
 
 
 
-## Fix verification — upstream `agent-infra/sandbox` HEAD `7f1afaf` (2026-11-23 17:55 UTC)
+## Fix verification
 
 Cloned `https://github.com/agent-infra/sandbox.git` at HEAD `7f1afaf`
 (commit `docs(daemon): CDP gateway CORS, 1.0.1 image changelog and tags (#244)`),
@@ -160,21 +173,37 @@ Inspected the full commit range `v1.11.0..HEAD` (10 commits) and the repository 
 
 ## Disclosure
 
-No CVE assigned; no CNA contacted yet. Upstream has no published `SECURITY.md`/security policy or
-contact links (`isSecurityPolicyEnabled=false`, `contactLinks=[]`), so the 2026-11-21 vendor
-notification used best-effort maintainer addresses identified from package/GitHub metadata:
-`songhaonan.773@bytedance.com` (To), `zhangjingtian.oana@bytedance.com` and
-`chaolinjin@gmail.com` (Cc). Proton reported a bounce only for `zhangjingtian.oana@bytedance.com`
-(`550 verify address failed, User not found`); no bounce was listed for the other recipients.
-The sent message is archived at `evidence/disclosure/20261121T210302Z_vendor_email.eml`; contact
-research is in `evidence/disclosure/CONTACT_RESEARCH.txt`. Awaiting vendor response; publish only
-after coordinated disclosure.
+VulnCheck report [`3fd9874f-480e-49c5-868a-2b0bf24d1a6b`](https://vulncheck.com/advisories/report)
+was submitted 2026-11-26 for CVE assignment and vendor coordination; no CVE assigned yet.
+
+Upstream publishes no `SECURITY.md`/security policy and exposes no contact links
+(`isSecurityPolicyEnabled=false`, `contactLinks=[]`), so the 2026-11-21 vendor notification used
+best-effort maintainer addresses from package/GitHub metadata: `songhaonan.773@bytedance.com` (To),
+`zhangjingtian.oana@bytedance.com` and `chaolinjin@gmail.com` (Cc). Proton bounced only
+`zhangjingtian.oana@bytedance.com` (`550 verify address failed, User not found`); no bounce was
+listed for the other recipients. No vendor reply as of 2026-11-26.
+
+Read the sent message: [`VENDOR-CONTACT.md`](VENDOR-CONTACT.md) ·
+[rendered email](evidence/disclosure/20261121T210302Z_vendor_email.md) ·
+[raw `.eml`](evidence/disclosure/20261121T210302Z_vendor_email.eml).
+Canonical history: [`TIMELINE.md`](TIMELINE.md).
 
 ### Timeline (UTC)
 
-| Date | Event |
+| Date (UTC) | Event |
 |---|---|
-| 2026-11-21 | Final report/hash pack sealed (`report_20261121_201810.md`, sha256 `fdd60c9c…`) |
-| 2026-11-21 21:03Z | Vendor notification sent via Proton Mail to best-effort maintainer contacts |
-| 2026-11-21 21:03:09Z | Proton bounce for `zhangjingtian.oana@bytedance.com` only (`550 user not found`) |
-| 2026-11-23 17:55Z | Upstream `agent-infra/sandbox` re-checked at HEAD `7f1afaf` (past v1.11.0 tag `6bd4b52`); **no fix** — all commits after v1.11.0 are docs-only, none touch nginx config or `$request_uri` auth bypass |
+| 2026-11-21T20:13:30Z | Exploit start; first verified auth bypass against `1.11.0` | `evidence/00_timestamps.txt` |
+| 2026-11-21T20:15:59Z | Container root verified (`sudo -n id` → `uid=0`) | `evidence/00_timestamps.txt`, `evidence/11_postexploit.txt` |
+| 2026-11-21T20:18:10Z | Report sealed | `report_20261121_201810.md` |
+| 2026-11-21T20:19:57Z | Final verification: 401 / 200 / WS 101 / Jupyter 200 / code-server 302 | `evidence/12_final_verification.txt` |
+| 2026-11-21T21:03:02Z | Vendor notified by Proton Mail: To `songhaonan.773@bytedance.com`, Cc `zhangjingtian.oana@bytedance.com`, `chaolinjin@gmail.com`; full evidence zip attached | `VENDOR-CONTACT.md`, `evidence/disclosure/20261121T210302Z_vendor_email.eml` |
+| 2026-11-21T21:03:09Z | One Cc bounced: `550 verify address failed, User not found` (zhangjingtian.oana) | `evidence/disclosure/20261121T210309Z_bounce_zhangjingtian_oana_at_bytedance_com.txt` |
+| 2026-11-23T17:55:00Z | Upstream HEAD `7f1afaf` re-checked: docs-only commits after v1.11.0, no nginx/auth change, no fix | `cve-submission/advisory.md` § Fix verification |
+| 2026-11-26T12:47:09Z | Fresh re-verification sweep start: control 401, bypass 200 (1176 B), `.txt` control 401, terminal-url 200 | `evidence/reverify-20261126/00_sweep.txt`, `01_matrix.txt` |
+| 2026-11-26T12:47:14Z | WebSocket `101` with no Authorization header; `uid=1000(gem)` | `evidence/reverify-20261126/03_rce_ws.txt` |
+| 2026-11-26T12:47:29Z | Sweep end; `sudo -n id` → `uid=0(root)`, `ROOTPROOF_0`; test container removed | `evidence/reverify-20261126/04_root.txt` |
+| 2026-11-26T12:47:37Z | Upstream HEAD re-checked via `git ls-remote`: still `7f1afaf`, no fix | `evidence/reverify-20261126/00_sweep.txt` |
+| 2026-11-26T12:49:53Z | VulnCheck submission package prepared; report archived | `submission/vulncheck/`, `~/BugBounty/agent-infra-sandbox/20261126/124953/` |
+| 2026-11-26T12:55Z | This repository made public with vendor-contact proof and timeline | this file, `VENDOR-CONTACT.md` |
+| 2026-11-26T13:05:50Z | VulnCheck report submitted — ID `3fd9874f-480e-49c5-868a-2b0bf24d1a6b` | `https://vulncheck.com/advisories/report` |
+| _TBD_ | Vendor response / CVE assigned | — |
